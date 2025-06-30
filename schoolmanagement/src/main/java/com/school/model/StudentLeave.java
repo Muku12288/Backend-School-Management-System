@@ -8,6 +8,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.school.dto.StudentLeaveDto;
+import com.school.dto.StudentLeaveResponseDto;
 import com.school.enums.StudentLeaveStatus;
 
 import jakarta.persistence.Entity;
@@ -34,10 +35,10 @@ public class StudentLeave {
 	
 	private StudentLeaveStatus studentLeaveStatus;
 	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.LAZY, optional = false) //this StudentLeave belongs to one User
 	@JoinColumn(name = "user_id", nullable = false)
-	@OnDelete(action = OnDeleteAction.CASCADE)
-	@JsonIgnore
+	@OnDelete(action = OnDeleteAction.CASCADE) //When the user is deleted, associated leave records are deleted too (@OnDelete)
+	@JsonIgnore //The user field is ignored in JSON serialization (@JsonIgnore) — this avoids infinite loops
 	private User user;
 	
 	//for get student all leaves api
@@ -53,7 +54,21 @@ public class StudentLeave {
 		
 		return studentLeaveDto;
 	}
-	
+	//for get student all leaves api
+	public StudentLeaveResponseDto getStudentLeaveResponseDto() {
+		StudentLeaveResponseDto studentLeaveResponseDto = new StudentLeaveResponseDto();
+		
+		studentLeaveResponseDto.setId(id);
+		studentLeaveResponseDto.setSubject(subject);
+		studentLeaveResponseDto.setBody(body);
+		studentLeaveResponseDto.setDate(date);
+		studentLeaveResponseDto.setStudentLeaveStatus(studentLeaveStatus);
+		studentLeaveResponseDto.setUserid(user.getId());
+		studentLeaveResponseDto.setName(user.getName());
+		studentLeaveResponseDto.setStudentClass(user.getStudentClass());
+		
+		return studentLeaveResponseDto;
+	}
 	
 	
 	

@@ -96,7 +96,7 @@ public class AuthenticationController {
 		}
 		
 		
-		
+		// In userDetails we store email as userDetails
 		final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getEmail());
 		
 		// set token into header and store into local storage

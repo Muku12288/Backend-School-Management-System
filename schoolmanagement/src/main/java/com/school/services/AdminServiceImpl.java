@@ -19,6 +19,7 @@ import com.school.dto.SingleStudentDto;
 import com.school.dto.SingleTeacherDto;
 import com.school.dto.StudentDto;
 import com.school.dto.StudentLeaveDto;
+import com.school.dto.StudentLeaveResponseDto;
 import com.school.dto.TeacherDto;
 import com.school.enums.StudentLeaveStatus;
 import com.school.enums.UserRole;
@@ -157,9 +158,9 @@ public class AdminServiceImpl implements AdminService{
 
 	
 	@Override
-	public List<StudentLeaveDto> getAllAppliedLeaves() {
+	public List<StudentLeaveResponseDto> getAllAppliedLeaves() {
 		
-		return studentLeaveRepository.findAll().stream().map(StudentLeave::getStudentLeaveDto).collect(Collectors.toList());
+		return studentLeaveRepository.findAll().stream().map(StudentLeave::getStudentLeaveResponseDto).collect(Collectors.toList());
 
 	}
 

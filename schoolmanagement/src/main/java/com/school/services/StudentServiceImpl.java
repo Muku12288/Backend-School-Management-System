@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.school.dto.SingleStudentDto;
 import com.school.dto.StudentDto;
 import com.school.dto.StudentLeaveDto;
+import com.school.dto.StudentLeaveResponseDto;
 import com.school.enums.StudentLeaveStatus;
 import com.school.model.StudentLeave;
 import com.school.model.User;

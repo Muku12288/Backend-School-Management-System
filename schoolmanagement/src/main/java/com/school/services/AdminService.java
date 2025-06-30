@@ -6,6 +6,7 @@ import com.school.dto.SingleStudentDto;
 import com.school.dto.SingleTeacherDto;
 import com.school.dto.StudentDto;
 import com.school.dto.StudentLeaveDto;
+import com.school.dto.StudentLeaveResponseDto;
 import com.school.dto.TeacherDto;
 
 public interface AdminService {
@@ -20,7 +21,7 @@ public interface AdminService {
 	
 	StudentDto updateStudent(int studentId, StudentDto studentDto);
 
-	List<StudentLeaveDto> getAllAppliedLeaves();
+	List<StudentLeaveResponseDto> getAllAppliedLeaves();
 
 	StudentLeaveDto changeLeaveStatus(int leaveId, String status);
 

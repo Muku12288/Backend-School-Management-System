@@ -23,6 +23,7 @@ import com.school.dto.SingleStudentDto;
 import com.school.dto.SingleTeacherDto;
 import com.school.dto.StudentDto;
 import com.school.dto.StudentLeaveDto;
+import com.school.dto.StudentLeaveResponseDto;
 import com.school.dto.TeacherDto;
 import com.school.services.AdminService;
 
@@ -93,8 +94,8 @@ public class AdminController<T> {
 	
 	// Admin get all leaves details, which is applied by student
 	@GetMapping("/leaves")
-	public ResponseEntity<List<StudentLeaveDto>> getAllAppliedLeaves(){
-		List<StudentLeaveDto> studentLeaveDtos =adminService.getAllAppliedLeaves();
+	public ResponseEntity<List<StudentLeaveResponseDto>> getAllAppliedLeaves(){
+		List<StudentLeaveResponseDto> studentLeaveDtos =adminService.getAllAppliedLeaves();
 		
 		if(studentLeaveDtos == null) {
 			return ResponseEntity.notFound().build();
